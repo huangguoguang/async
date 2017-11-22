@@ -1,7 +1,12 @@
 package com.huangguang;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.scheduling.annotation.Async;
+import org.springframework.scheduling.annotation.AsyncResult;
 import org.springframework.stereotype.Component;
+
+import java.util.concurrent.Future;
 
 /**
  * Created with IntelliJ IDEA.
@@ -12,30 +17,32 @@ import org.springframework.stereotype.Component;
  */
 @Component
 public class TestTask {
+    private final Logger logger = LoggerFactory.getLogger(this.getClass());
     @Async
     public void task1() throws InterruptedException {
-        System.out.println("执行任务1");
+        logger.info("执行任务1");
         long start = System.currentTimeMillis();
-        Thread.sleep(10000);
+        Thread.sleep(5000);
         long end = System.currentTimeMillis();
-        System.out.println("任务1执行完成，用时" + (end - start));
+        logger.info("任务1执行完成，用时" + (end - start));
     }
 
     @Async
     public void task2() throws InterruptedException {
-        System.out.println("执行任务2");
+        logger.info("执行任务2");
         long start = System.currentTimeMillis();
-        Thread.sleep(50000);
+        Thread.sleep(10000);
         long end = System.currentTimeMillis();
-        System.out.println("任务2执行完成，用时" + (end - start));
+        logger.info("任务2执行完成，用时" + (end - start));
     }
 
     @Async
-    public void task3() throws InterruptedException {
-        System.out.println("执行任务3");
+    public Future<String> task3() throws InterruptedException {
+        logger.info("执行任务3");
         long start = System.currentTimeMillis();
-        Thread.sleep(80000);
+        Thread.sleep(20000);
         long end = System.currentTimeMillis();
-        System.out.println("任务3执行完成，用时" + (end - start));
+        logger.info("任务3执行完成，用时" + (end - start));
+        return new AsyncResult<>("task3 completed");
     }
 }
