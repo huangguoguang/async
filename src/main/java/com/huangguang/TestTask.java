@@ -18,7 +18,8 @@ import java.util.concurrent.Future;
 @Component
 public class TestTask {
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
-    @Async
+
+    @Async("myexecutor")
     public void task1() throws InterruptedException {
         logger.info("执行任务1");
         long start = System.currentTimeMillis();
@@ -27,7 +28,7 @@ public class TestTask {
         logger.info("任务1执行完成，用时" + (end - start));
     }
 
-    @Async
+    @Async("secondExecutor")
     public void task2() throws InterruptedException {
         logger.info("执行任务2");
         long start = System.currentTimeMillis();

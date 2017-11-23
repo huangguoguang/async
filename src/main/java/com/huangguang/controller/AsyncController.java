@@ -1,5 +1,6 @@
-package com.huangguang;
+package com.huangguang.controller;
 
+import com.huangguang.TestTask;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,4 +37,5 @@ public class AsyncController {
         }
         return "success";
     }
+
 }
