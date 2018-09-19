@@ -31,7 +31,7 @@ public class ExecutorConfig {
     @Bean
     public ThreadPoolTaskExecutor secondExecutor() {
         ThreadPoolTaskExecutor executor = new ThreadPoolTaskExecutor();
-        executor.setCorePoolSize(5);
+        executor.setCorePoolSize(4);
         executor.setMaxPoolSize(100);
         executor.setQueueCapacity(1000);
         executor.initialize();

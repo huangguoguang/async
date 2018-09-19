@@ -27,4 +27,11 @@ public class UserController {
         userService.register(userBean);
         return "注册成功";
     }
+
+    @RequestMapping(value = "withdraw")
+    public void withdraw() {
+        for(int i = 0; i< 10;i++) {
+            userService.doWithdraw(i);
+        }
+    }
 }

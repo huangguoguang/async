@@ -11,4 +11,7 @@ import com.huangguang.entiy.UserBean;
  */
 public interface UserService {
     public void register(UserBean userBean);
+
+    void doWithdraw(Integer index);
+
 }

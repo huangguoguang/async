@@ -2,6 +2,7 @@ package com.huangguang.service.impl;
 
 import com.huangguang.entiy.UserBean;
 import com.huangguang.event.UserRegisterEvent;
+import com.huangguang.event.WithdrawEvent;
 import com.huangguang.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
@@ -23,5 +24,10 @@ public class UserServiceImpl implements UserService {
     public void register(UserBean userBean) {
         //发布事件
         context.publishEvent(new UserRegisterEvent(this, userBean));
+    }
+
+    @Override
+    public void doWithdraw(Integer index) {
+        context.publishEvent(new WithdrawEvent(this, index));
     }
 }
