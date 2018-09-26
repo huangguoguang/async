@@ -2,6 +2,8 @@ package com.huangguang.controller;
 
 import com.huangguang.entiy.UserBean;
 import com.huangguang.service.UserService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -16,6 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class UserController {
 
+    private static final Logger logger = LoggerFactory.getLogger(UserController.class);
     @Autowired
     private UserService userService;
 
@@ -31,6 +34,7 @@ public class UserController {
     @RequestMapping(value = "withdraw")
     public void withdraw() {
         for(int i = 0; i< 10;i++) {
+            logger.info("=============" + i);
             userService.doWithdraw(i);
         }
     }

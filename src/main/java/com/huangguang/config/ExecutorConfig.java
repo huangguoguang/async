@@ -37,4 +37,14 @@ public class ExecutorConfig {
         executor.initialize();
         return executor;
     }
+
+    @Bean
+    public ThreadPoolTaskExecutor thirdExecutor() {
+        ThreadPoolTaskExecutor executor = new ThreadPoolTaskExecutor();
+        executor.setCorePoolSize(3);
+        executor.setMaxPoolSize(100);
+        executor.setQueueCapacity(1000);
+        executor.initialize();
+        return executor;
+    }
 }

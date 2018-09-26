@@ -14,4 +14,6 @@ public interface UserService {
 
     void doWithdraw(Integer index);
 
+    void testSchedule();
+
 }

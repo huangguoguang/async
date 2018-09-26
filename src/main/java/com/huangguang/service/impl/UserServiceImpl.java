@@ -1,11 +1,13 @@
 package com.huangguang.service.impl;
 
 import com.huangguang.entiy.UserBean;
+import com.huangguang.event.ThirdEvent;
 import com.huangguang.event.UserRegisterEvent;
 import com.huangguang.event.WithdrawEvent;
 import com.huangguang.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
 /**
@@ -29,5 +31,11 @@ public class UserServiceImpl implements UserService {
     @Override
     public void doWithdraw(Integer index) {
         context.publishEvent(new WithdrawEvent(this, index));
+    }
+
+    @Scheduled(cron = "${schedule.time}")
+    @Override
+    public void testSchedule() {
+        context.publishEvent(new ThirdEvent(this));
     }
 }
