@@ -43,12 +43,15 @@ public class TestList {
                 .map(Student::getName)
                 .collect(Collectors.toList());
         System.out.println(nList);
+        nList.forEach(s -> System.out.println(s));
+
 
         List<Integer> sList = studentList.stream()
                 .sorted(Comparator.comparing(Student::getScore).reversed())
                 .map(Student::getScore)
                 .collect(Collectors.toList());
         System.out.println(sList);
+        sList.forEach(System.out::println);
 
         //求和
         Integer sum = studentList.stream().mapToInt(Student::getScore).sum();
